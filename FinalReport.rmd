@@ -23,9 +23,17 @@ A new  preventative aides drug (triUmpsal) is under test in clinical trials. Con
 
 We need to make a smaller data frame that only contains the data concerning females. We will analyze this data frame and decide whether or not this drug is effective for them. 
   
+```{r}
+girls <- filter(triUmp, gender == "F")
+```
+  
+We used the "filter()" command to reduce the data frame to ony include the female subjects. 
+  
 # Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
+
+
 
 ## Descriptive Results
 
@@ -33,6 +41,23 @@ We need to make a smaller data frame that only contains the data concerning fema
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
 
+```{r}
+dd2 <- girls %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+In the count vs. infected graph, the number of people that ended up with aids is way smaller than the number who did not, but this is common in clinical trials. From the percentage viewpoint, of the people who ended up with aids, the largest set of them had taken the drug that was supposed to prevent aids. This is a sign that the drug is not working particularly for females.
+  
+  
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
