@@ -55,6 +55,7 @@ basicC + geom_bar(stat="identity",position="dodge")
 basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
+
 In the count vs. infected graph, the number of people that ended up with aids is way smaller than the number who did not, but this is common in clinical trials. From the percentage viewpoint, of the people who ended up with aids, the largest set of them had taken the drug that was supposed to prevent aids, about 60%. 40% of the women who got aids took a placebo. This is a sign that the drug is not working particularly for females.
   
   
@@ -84,3 +85,5 @@ From the fisher test, we can see that about 210 people ended up with aids who al
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+We used a Cat-Cat helper file to help with this assignment. We first however had to utilize the filter() command to separate the data frame to only have data that involved females. We next used bar plots that showed us that the females who took the drug and got aids is higher than the amount of femals who did got aids and took the placebo. Then, we used a table to get the exact number percentage of people who got aids and took the drug. Finally we used chi-squared and fisher XY tests to observe the p-value, which led us to reject the null hypothesis that there was no difference between the people who took the drug and the people who did not take the drug. We concluded that overall, the drug is not effective in preventing aids in women.
